@@ -1,0 +1,109 @@
+module.exports = "                 \
+                                   \
+.input {                           \
+        position: relative;        \
+        z-index: 1;                \
+        display: inline-block;     \
+        /*margin: 1em; */          \
+        vertical-align: top;       \
+}                                  \
+                                   \
+.input__field {                    \
+        position: relative;        \
+        left: 0.07rem;             \
+        display: block;            \
+        float: right;              \
+        width: 60%;                \
+        border: none;              \
+        border-radius: 0;          \
+        font-weight: bold;         \
+        -webkit-appearance: none; /* for box shadows to show on iOS */ \
+}                                  \
+                                   \
+.input__field:focus {              \
+        outline: none;             \
+}                                  \
+                                   \
+.input__label {                    \
+        display: inline-block;     \
+        float: right;              \
+        padding: 0.05rem;          \
+        width: 40%;                \
+        /*color: #6a7989;*/        \
+        font-weight: bold;         \
+        font-size: 70.25%;         \
+        -webkit-font-smoothing: antialiased; \
+        -moz-osx-font-smoothing: grayscale;  \
+        -webkit-touch-callout: none;         \
+        -webkit-user-select: none;           \
+        -khtml-user-select: none;            \
+        -moz-user-select: none;              \
+        -ms-user-select: none;               \
+        user-select: none;                   \
+}                                  \
+                                   \
+.input__label-content {            \
+        position: relative;        \
+        display: block;            \
+        width: 100%;               \
+}                                  \
+                                   \
+.input--haruki {                   \
+     margin-top: 2em;              \
+}                                  \
+                                   \
+.input__field--haruki {            \
+        width: 100%;               \
+        background: transparent;   \
+}                                  \
+                                   \
+.input__label--haruki {            \
+        position: absolute;        \
+        width: 100%;               \
+        text-align: left;          \
+        pointer-events: none;      \
+}                                  \
+                                   \
+.input__label-content--haruki {    \
+        -webkit-transition: -webkit-transform 0.3s; \
+        transition: transform 0.3s;                 \
+}                                  \
+                                   \
+.input__label--haruki::before,     \
+.input__label--haruki::after {     \
+        content: '';               \
+        position: absolute;        \
+        left: 0;                   \
+        z-index: 1;                \
+        width: 100%;               \
+        height: 4px;               \
+        -webkit-transition: -webkit-transform 0.3s; \
+        transition: transform 0.3s;                 \
+}                                  \
+                                   \
+.input__label--haruki::before {    \
+        top: 0;                    \
+}                                  \
+                                   \
+.input__label--haruki::after {     \
+        bottom: 0;                 \
+}                                  \
+                                   \
+.input__field--haruki:focus + .input__label--haruki .input__label-content--haruki, \
+.input--filled .input__label-content--haruki {                                     \
+        -webkit-transform: translate3d(0, -2em, 0);                                \
+        transform: translate3d(0, -2em, 0);                                        \
+}                                  \
+                                   \
+.input__field--haruki:focus + .input__label--haruki::before,  \
+.input--filled .input__label--haruki::before {                \
+        -webkit-transform: translate3d(0, -0.5em, 0);         \
+        transform: translate3d(0, -0.5em, 0);                 \
+}                                                             \
+                                                              \
+.input__field--haruki:focus + .input__label--haruki::after,   \
+.input--filled .input__label--haruki::after {                 \
+        -webkit-transform: translate3d(0, 0.5em, 0);          \
+        transform: translate3d(0, 0.5em, 0);                  \
+}                                                             \
+";

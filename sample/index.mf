@@ -1,0 +1,8 @@
+<setting>
+    <tag load="mofron-comp-haruki">Input</tag>
+</setting>
+
+<Input label="haruki input">
+    <size>2rem,0.7rem</size>
+    <color>#6a7989,#f0e6fa,#787878</color>
+</Input>
