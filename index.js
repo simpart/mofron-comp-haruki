@@ -16,7 +16,8 @@ const label_dom = new mofron.class.Dom({
                   });
 const input_dom = new mofron.class.Dom({
                       tag: "input", attrs: { type: "text" },
-                      class: ["input__field","input__field--haruki"]
+                      class: ["input__field","input__field--haruki"],
+		      style: { 'top' : "0.01rem" }
                   });
 
 module.exports = class extends Input {
