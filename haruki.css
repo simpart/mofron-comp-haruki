@@ -3,8 +3,7 @@ module.exports = "                 \
 .input {                           \
         position: relative;        \
         z-index: 1;                \
-        display: inline-block;     \
-        /*margin: 1em; */          \
+        display: block;            \
         vertical-align: top;       \
 }                                  \
                                    \
@@ -49,7 +48,8 @@ module.exports = "                 \
 }                                  \
                                    \
 .input--haruki {                   \
-     margin-top: 2em;              \
+     /* margin-top: 2em; */             \
+     padding-top: 2.5em;           \
 }                                  \
                                    \
 .input__field--haruki {            \

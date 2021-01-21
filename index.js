@@ -10,16 +10,6 @@ const comutl = mofron.util.common;
 const cmputl = mofron.util.component;
 const css    = require("./haruki.css");
 
-const label_dom = new mofron.class.Dom({
-                      tag: "label", class: ["input__label","input__label--haruki"],
-		      style: { "display": "flex", "align-items": "center" }
-                  });
-const input_dom = new mofron.class.Dom({
-                      tag: "input", attrs: { type: "text" },
-                      class: ["input__field","input__field--haruki"],
-		      style: { 'top' : "0.01rem" }
-                  });
-
 module.exports = class extends Input {
     /**
      * initialize component
@@ -34,10 +24,8 @@ module.exports = class extends Input {
             super();
             this.modname("Haruki");
             
-	    /* add config */
-	    this.confmng().add("main-color", { type: "string" });
-	    this.confmng().add("accent-color", { type: "string" });
-            
+	    this.confmng().add("labelDom", { type:"Dom", private:true });
+
 	    /* init config */
 	    if (0 < arguments.length) {
                 this.config(p1);
@@ -55,8 +43,17 @@ module.exports = class extends Input {
      */
     initDomConts () {
         try {
-	    label_dom.component(this);
-	    input_dom.component(this);
+            let label_dom = new mofron.class.Dom({
+                      tag: "label", class: ["input__label","input__label--haruki"],
+                      style: { "display": "flex", "align-items": "center" },
+		      component:this
+                  });
+            this.labelDom(label_dom);
+            let input_dom = new mofron.class.Dom({
+                      tag: "input", attrs: { type: "text" },
+                      class: ["input__field","input__field--haruki"],
+                      style: { 'top' : "0.01rem" }, component:this
+                  });
             this.rootDom(
 	        new mofron.class.Dom({
 		    tag: "span", component: this,
@@ -96,6 +93,22 @@ module.exports = class extends Input {
             
 	    this.size("1.5rem", "0.25rem");
         } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    /**
+     * label dom getter
+     * 
+     * @param (Dom) label dom object
+     * @return (Dom) label dom object
+     * @type private
+     */
+    labelDom (prm) {
+        try {
+            return this.confmng("labelDom", prm);
+	} catch (e) {
             console.error(e.stack);
             throw e;
         }
@@ -167,8 +180,9 @@ module.exports = class extends Input {
             /* setter */
             let set_siz = comutl.sizediff(prm, this.sizeOffset())
 	    cmputl.size(this, "height", prm, opt);
+	    this.rootDom()[0].style({ "height" : set_siz });
             this.style({ "font-size" : set_siz });
-	    label_dom.style({ height: set_siz });
+	    this.labelDom().style({ height: set_siz });
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -188,9 +202,10 @@ module.exports = class extends Input {
         try {
 	    if (undefined === prm) {
                 /* getter */
-		return this.confmng("main-color");
+		return this.confmng("mainColor");
 	    }
 	    /* setter */
+	    this.confmng("mainColor",prm);
 	    let clr = comutl.getcolor(prm);
 	    let set = "";
 	    set += ".input__label--haruki::before,";
@@ -221,9 +236,10 @@ module.exports = class extends Input {
         try {
             if (undefined === prm) {
                 /* getter */
-                return this.confmng("accent-color");
+                return this.confmng("accentColor");
             }
             /* setter */
+	    this.confmng("accentColor",prm);
             let clr = comutl.getcolor(prm);
             let set = "";
             set += ".input__field--haruki {";
